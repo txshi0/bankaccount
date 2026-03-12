@@ -102,7 +102,6 @@ while True:
         if current_user is None:
             print("Please login first")
             continue
-        print("=== DEPOSIT ===")
         amount = float(input("Input deposit amount: "))
         current_user.deposit(amount)
         
