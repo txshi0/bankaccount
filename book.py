@@ -34,7 +34,7 @@ class Library:
         print(f"="*30)
 
     def add_member(self, member):
-        self.books.append(member)
+        self.members.append(member)
 
         print(f"="*30)
         print("Member added successfully")
@@ -42,6 +42,27 @@ class Library:
             print(b)
         print(f"="*30)
 
+    def find_book(self, title):
+        print(f"="*30)
+        for book in self.books:
+            if book.title.lower() == title.lower():
+                print("Book Found.")
+                print(book)
+                print(f"="*30)
+                return
+        print("Book not found.")
+        print(f"="*30)
+
+    def find_member(self, name):
+        print(f"="*30)
+        for member in self.members:
+            if member.name.lower() == name.lower():
+                print("Member Found.")
+                print(member)
+                print(f"="*30)
+                return
+        print("Member is not found.")
+        print(f"="*30)
 
 library = Library()
 
@@ -73,10 +94,12 @@ while True:
         library.add_member(new_member)
 
     if choice == "3":
-        pass
+        title = input("Enter the book title to find: ")
+        library.find_book(title)
 
     if choice == "4":
-        pass
+        name = input("Enter member name to find: ")
+        library.find_member(name)
 
     if choice == "5":
         pass
