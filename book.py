@@ -64,6 +64,43 @@ class Library:
         print("Member is not found.")
         print(f"="*30)
 
+    def borrow_book(self, member_name, book_title):
+        print("="*30)
+        for member in self.members:
+            if member.name == member_name:
+                for book in self.books:
+                    if book.title == book_title:
+                        if book.is_borrowed:
+                            print("Book is already borrowed.")
+                        else:
+                            book.is_borrowed = True
+                            member.books_held.append(book)
+                            print("Book borrowed successfully.")
+                        print("="*30)
+                        return
+                print("Book not found.")
+                print("="*30)
+                return
+        print("Member not found.")
+        print("="*30)
+
+    def return_book(self, member_name, book_title):
+        print("="*30)
+        for member in self.members:
+            if member.name == member_name:
+                for book in member.books_held:
+                    if book.title == book_title:
+                        book.is_borrowed = False
+                        member.books_held.remove(book)
+                        print("Book returned successfully.")
+                        print("="*30)
+                        return
+                print("This member does not have that book.")
+                print("="*30)
+                return
+        print("Member not found.")
+        print("="*30)
+
 library = Library()
 
 while True:
@@ -102,7 +139,11 @@ while True:
         library.find_member(name)
 
     if choice == "5":
-        pass
+        member_name = input("Enter member name: ")
+        book_title = input("Enter book title: ")
+        library.borrow_book(member_name, book_title)
 
     if choice == "6":
-        pass
+        member_name = input("Enter member name: ")
+        book_title = input("Enter book title: ")
+        library.return_book(member_name, book_title)
