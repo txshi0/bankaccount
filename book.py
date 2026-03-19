@@ -125,8 +125,8 @@ while True:
         library.add_book(new_book)
 
     if choice == "2":
-        name = input("Member Name: ")
-        age = input("Member Age: ")
+        name = input("Enter member Name: ")
+        age = input("Enter member Age: ")
         new_member = Member(name=name, age=age)
         library.add_member(new_member)
 
